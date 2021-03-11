@@ -4,14 +4,32 @@
 <head>
     <meta charset="utf-8">
     <title>Handcheck (tinygo)</title>
-    <script src="wasm_exec.js" async></script>
+    <script src="wasm_exec.js"></script>
     <script src="handcheck.js" async></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        body {
+            font-family: sans-serif;
+            padding: 10pt 10pt;
+        }
+        p, li {
+            line-height: 140%;
+        }
         .und {
             text-decoration: underline;
         }
         .nerds {
             font-style: italic;
+        }
+        #inpHand {
+            width: 200pt;
+        }
+        #result {
+            font-size: 24pt;
+        }
+        #error {
+            font-family: monospace;
+            color: orangered;
         }
     </style>
 </head>
@@ -26,14 +44,19 @@
     <label for="inpHand">Hand: </label>
     <input type="text" id="inpHand"/>
     <button id="btnCheck" disabled>Check</button>
-    <label for="chkSplit">Split</label>
-    <input type="checkbox" id="chkSplit"/>
-    <label for="chkMemo">Memo</label>
-    <input type="checkbox" id="chkMemo" checked/>
+    <label for="selStrategy">Strategy:
+        <select id="selStrategy">
+            <option value="opt" selected>Optimal</option>
+            <option value="optcnt" disabled>Optimal Counter</option>
+            <option value="greedy">Greedy (buggy)</option>
+        </select>
+    </label>
+    <label for="chkSplit">Split<input type="checkbox" id="chkSplit"/></label>
+    <label for="chkMemo">Memo<input type="checkbox" id="chkMemo" checked/></label>
 </p>
 
-<p id="result" style="font-size: 24pt"></p>
-<p id="error" style="color: orangered">Loading... checker is 130KB+, please be patient</p>
+<p id="result"></p>
+<p id="error">Loading... checker is 145KB, please be patient (if there is no change, try refreshing the page)</p>
 
 <p>Notes:</p>
 <ul>
